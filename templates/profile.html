@@ -1,0 +1,69 @@
+<doctype html>
+<html>
+<head>
+	<title>User Profile</title>
+	    <!-- Bootstrap core CSS -->
+    <link href="../static/dashboard/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css?family=Spectral+SC|Merienda|Life+Savers|Bungee+Shade|Cherry+Swash|Shadows+Into+Light|Eater|Euphoria+Script|Cinzel+Decorative|Kotta+One" rel="stylesheet"> 
+    <link href="../static/profile.css" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet"> 
+
+
+    <!-- Custom styles for this template -->
+    <link href="../static/dashboard/css/simple-sidebar.css" rel="stylesheet">
+</head>
+<body>
+	<div id="wrapper" class="toggled">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+                <div style="font-family: 'Bitter',serif; font-weight: bold;">
+
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="Dashboard">
+                        DASHBOARD
+                    </a>
+                </li>
+    <li style="background-color: green; font-weight: bold;"><a href="profile.html"  style="color: lightyellow;">USER PROFILE</a></li>
+    <li><a href="books.html">BOOKS</a></li>
+    {% if usr.type=="admin" %}
+    <li><a href="addbooks.html">ADD BOOKS</a></li>
+    {% endif %}
+        {% if usr.type == "admin" %}
+    <li><a href="issuereq.html">ISSUE REQUESTS</a></li>
+            <li ><a href="bookre.html" >BOOK REQUESTS</a></li>
+
+    <li><a href="def.html">DEFAULTERS LIST</a></li>
+    {% endif %}
+    {% if usr.type != "admin" %}
+    <li ><a href="return_book.html">RETURN BOOKS</a></li>
+    <li><a href="issue_hist.html">ISSUE HISTORY</a></li>
+    <li><a href="book_req.html">BOOK REQUISITION FORM</a></li>
+    <li><a href="dues.html">DUES AND RECEIPTS</a> </li>
+    {% endif %}
+                    <li>
+                    <form method="POST" action="/logout">
+                        <input type="submit" value="LOGOUT">
+                    </form>
+                </li>
+                </ul>
+        </div></div>
+    <div id="page-content-wrapper">
+            <div class="container-fluid">
+	<!-- <h1>Welcome {{usr.first}} </h1> -->
+    <div class="profile">
+       <h1>Your Profile</h1>
+	   <h1>Full Name: {{usr.first}} {{usr.last}}</h1>
+	   <h1>Email Id: {{usr.email}}</h1>
+	   <h1>Username: {{usr.username}}</h1>
+	   <h1>Account type: {{usr.type}} </h1>
+	   {% if usr.type!="admin" %}
+	   <h1>No of Books Issued:{{length}}</h1>
+	{% endif %}
+    </div>
+</div></div></div>
+    <script src="../static/dashboard/vendor/jquery/jquery.min.js"></script>
+    <script src="../static/dashboard/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

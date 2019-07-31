@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>RETURN BOOK</title>
+	<link rel="stylesheet" type="text/css" href="../static/style.css">
+	<link href="../static/table/new.css" rel="stylesheet">
+	<link href="../static/form/form.css" rel="stylesheet">
+	<link href="../static/back/back.css" rel="stylesheet">
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="../static/dashboard/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../static/dashboard/css/simple-sidebar.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet"> 
+
+</head>
+<body>
+	<div id="wrapper" class="toggled">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+	<div style="font-family: 'Bitter',serif; font-weight: bold;">
+
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="Dashboard">
+                        DASHBOARD
+                    </a>
+                </li>
+	<li><a href="profile.html">USER PROFILE</a></li>
+	<li><a href="books.html">BOOKS</a></li>
+	{% if usr.type=="admin" %}
+	<li><a href="addbooks.html">ADD BOOKS</a></li>
+	{% endif %}
+		{% if usr.type == "admin" %}
+	<li><a href="issuereq.html">ISSUE REQUESTS</a></li>
+	<li><a href="def.html">DEFAULTERS LIST</a></li>
+	{% endif %}
+	{% if usr.type != "admin" %}
+	<li style="background-color: green; font-weight: bold;"><a href="return_book.html" style="color: lightyellow;">RETURN BOOKS</a></li>
+	<li><a href="issue_hist.html">ISSUE HISTORY</a></li>
+	<li><a href="book_req.html">BOOK REQUISITION FORM</a></li>
+    <li><a href="dues.html">DUES AND RECEIPTS</a> </li>
+	
+	    {% endif %}
+	                <li>
+                    <form method="POST" action="/logout">
+						<input type="submit" value="LOGOUT">
+					</form>
+                </li>
+	            </ul>
+        </div>
+    </div>
+                <div id="page-content-wrapper">
+            <div class="container-fluid">
+	{% if length ==0 %}
+	<h1>No Books to Return</h1>
+	{% endif %}
+
+	{% if length >0 %}
+	
+	<br>
+	<br>
+	<form method="POST" action="/return">
+		<h1>ENTER ID OF BOOK TO BE RETURNED</h1><br>
+		<input style="width: 50%;" type="number" name="reqid" min="1">
+		<br>
+		<input class="submit" type="submit" value="RETURN">
+	</form>
+	<br>
+		<br>
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>BOOK NAME</th>
+			<th>ISSUETIME</th>
+			<th>RETURNTIME</th>
+			<th>STATUS</th>
+		</tr>
+		{% for item in data %}
+		<tr>
+			<td>{{item[0]}}</td>
+			<td>{{item[3]}}</td>
+			<td>{{item[4]}}</td>
+			<td>{{item[5]}}</td>
+			<td>{{item[6]}}</td>
+		</tr>
+		{% endfor %}
+	</table>
+	{% endif %}
+</div></div></div></div>
+    <script src="../static/dashboard/vendor/jquery/jquery.min.js"></script>
+    <script src="../static/dashboard/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

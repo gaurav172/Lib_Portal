@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Overdues</title>
+	<link rel="stylesheet" type="text/css" href="../static/style.css">
+	<link href="../static/table/new.css" rel="stylesheet">
+
+    <!-- Bootstrap core CSS -->
+    <link href="../static/dashboard/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../static/dashboard/css/simple-sidebar.css" rel="stylesheet">
+                <link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet"> 
+
+
+</head>
+<body>
+	<div id="wrapper" class="toggled">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+        	    <div style="font-family: 'Bitter',serif; font-weight: bold;">
+
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="Dashboard">
+                        DASHBOARD
+                    </a>
+                </li>
+    <li><a href="profile.html">USER PROFILE</a></li>
+    <li><a href="books.html">BOOKS</a></li>
+    {% if usr.type=="admin" %}
+    <li><a href="addbooks.html">ADD BOOKS</a></li>
+    {% endif %}
+        {% if usr.type == "admin" %}
+    <li><a href="issuereq.html">ISSUE REQUESTS</a></li>
+    <li><a href="def.html">DEFAULTERS LIST</a></li>
+    {% endif %}
+    {% if usr.type != "admin" %}
+    <li ><a href="return_book.html">RETURN BOOKS</a></li>
+    <li><a  href="issue_hist.html">ISSUE HISTORY</a></li>
+    <li><a href="book_req.html">BOOK REQUISITION FORM</a></li>
+    <li  style="background-color: green; font-weight: bold;"><a style="color: lightyellow;" href="dues.html">DUES AND RECEIPTS</a> </li>
+    {% endif %}
+	    	                <li>
+                    <form method="POST" action="/logout">
+						<input type="submit" value="LOGOUT">
+					</form>
+                </li>
+	            </ul>
+        </div></div>
+                <div id="page-content-wrapper">
+            <div class="container-fluid">
+ {% if len>0 %}
+<h1>Book Overdues</h1>
+<table>
+	<tr>
+		<th>ID</th>
+		<th>BOOKNAME</th>
+		<th>PENALTY</th>
+	</tr>
+	{% for x in range(0,len) %}
+	<tr>
+		<td>{{data[x][0]}}</td>
+		<td> {{data[x][3]}} </td>
+		<td> {{val[x]}} </td>
+	</tr>
+	{% endfor %}
+</table>
+{% endif %}
+{% if len==0 %}
+<h1>No Overdues</h1>
+{% endif %}
+</div></div></div>
+</body>
+</html>

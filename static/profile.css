@@ -1,0 +1,10 @@
+.profile{
+	background-color: s;
+	text-align:left;
+	font-size: 5.5vh;
+	font-weight: bold;
+	margin-left: 20px;
+	color: purple;
+	text-shadow: 2px 1px 3px darkblue, 3px 2px 5px orange, 1px 5px 10px chartreuse;
+	font-family: 'Kotta One';
+}

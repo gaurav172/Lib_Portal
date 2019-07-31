@@ -1,0 +1,84 @@
+* {
+    box-sizing: border-box;
+}
+.heading{
+    text-align:center;
+    font-size: 7vh;
+    font-weight: bold;
+    color: yellow;
+
+}
+.form {
+    background-color: #fff;
+    background-size: ;
+}
+.flex-container{
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+.sign{
+    background-image: url("li.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 100vh;
+    width: 100vw;
+}
+.formstyle {
+    margin:1vh;
+    max-width: 60vw;
+    padding: 20px 12px 10px 20px;
+    font: 1.5vh "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+.formstyle li {
+    padding: 0;
+    display: block;
+    list-style: none;
+    margin: 10px 0 0 0;
+}
+.formstyle label{
+    margin:0 0 3px 0;
+    padding:0px;
+    display:block;
+    font-weight: bold;
+}
+.formstyle input[type=text],
+.formstyle input[type=password],
+.formstyle input[type=email],
+select{
+    box-sizing: border-box;
+    border:1px solid #BEBEBE;
+    padding: 7px;
+    margin:0px;
+    outline: none; 
+}
+.formstyle input[type=text]:focus,
+.formstyle input[type=password]:focus,
+.formstyle input[type=email]:focus,
+.formstyle select:focus{
+    box-shadow: 0 0 8px #88D5E9;
+    border: 1px solid #88D5E9;
+}
+.formstyle .field-divided{
+    width: 49.4%;
+}
+
+.formstyle .field-long{
+    width: 100%;
+}
+
+.formstyle input[type=submit]{
+    background: orange;
+    padding: 8px 15px 8px 15px;
+    border: none;
+    color: #fff;
+}
+.formstyle input[type=submit]:hover{
+    background: #EA7B00;
+    color: #fff;
+}
+
+.formstyle .required{
+    color:red;
+}

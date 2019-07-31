@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head>
+	<title>Dashboard</title>
+	<link rel="stylesheet" type="text/css" href="../static/style.css">
+			<link href="../static/table/new.css" rel="stylesheet">
+                <link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet"> 
+
+
+	    <!-- Bootstrap core CSS -->
+    <link href="../static/dashboard/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../static/dashboard/css/simple-sidebar.css" rel="stylesheet">
+</head>
+<body>
+<div id="wrapper" class="toggled">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <div style="font-family: 'Bitter',serif; font-weight: bold;">
+
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand" style="background-color: green; font-weight: bold;">
+                    <a href="Dashboard" style="color: lightyellow;">
+                        DASHBOARD
+                    </a>
+                </li>
+    <li><a href="profile.html">USER PROFILE</a></li>
+    <li><a href="books.html">BOOKS</a></li>
+    {% if usr.type=="admin" %}
+    <li><a href="addbooks.html">ADD BOOKS</a></li>
+    {% endif %}
+        {% if usr.type == "admin" %}
+    <li><a href="issuereq.html">ISSUE REQUESTS</a></li>
+    <li ><a href="bookre.html" >BOOK REQUESTS</a></li>
+    <li><a href="def.html">DEFAULTERS LIST</a></li>
+    {% endif %}
+    {% if usr.type != "admin" %}
+    <li ><a href="return_book.html">RETURN BOOKS</a></li>
+    <li><a  href="issue_hist.html">ISSUE HISTORY</a></li>
+    <li><a href="book_req.html">BOOK REQUISITION FORM</a></li>
+    <li  ><a  href="dues.html">DUES AND RECEIPTS</a> </li>
+    {% endif %}
+	                <li>
+                    <form method="POST" action="/logout">
+						<input type="submit" value="LOGOUT">
+					</form>
+                </li>
+	            </ul>
+        </div></div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        	{% if usr.type != "admin" %} 
+
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+	<h1>Top Rated Books</h1>
+	<table>
+	<tr>
+		<th>BOOKID</th>
+		<th>BOOKNAME</th>
+		<th>AUTHOR</th>
+		<th>GENRE</th>
+		<th>RATING</th>
+	</tr>
+	{% for i in range(5) %}
+	<tr>
+		<td>{{topr[i][0]}}</td>
+		<td>{{topr[i][1]}}</td>
+		<td>{{topr[i][2]}}</td>
+		<td>{{topr[i][3]}}</td>
+		<td>{{topr[i][4]}}</td>
+	</tr>
+	{% endfor %}
+	</table>
+	{% endif %}
+
+	<br>
+	<br>
+<!-- 	<form method="POST" action="/logout">
+		<input type="submit" value="LOGOUT">
+	</form> -->
+</div></div></div>
+	    <script src="../static/dashboard/vendor/jquery/jquery.min.js"></script>
+    <script src="../static/dashboard/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

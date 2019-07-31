@@ -1,0 +1,16 @@
+import sqlite3
+
+conn=sqlite3.connect('test.db')
+
+c=conn.cursor()
+
+c.execute("CREATE TABLE REQUESTS(\
+ID INTEGER PRIMARY KEY AUTOINCREMENT,\
+BOOKID INTEGER,\
+USERID INTEGER,\
+NAME TEXT,\
+ISSUETIME TEXT,\
+RETURNTIME TEXT,\
+STATUS TEXT,\
+TME INTEGER\
+)")

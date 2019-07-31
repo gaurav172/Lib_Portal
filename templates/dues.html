@@ -1,0 +1,56 @@
+<html>
+<head>
+
+	<link rel="stylesheet" type="text/css" href="../static/style.css">
+	
+		<link href="../static/table/new.css" rel="stylesheet">
+				<link href="../static/form/form.css" rel="stylesheet">
+
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="../static/dashboard/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../static/dashboard/css/simple-sidebar.css" rel="stylesheet">
+</head>
+	<body>
+		<div id="wrapper" class="toggled">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="Dashboard">
+                        Dashboard
+                    </a>
+                </li>
+	<li><a href="profile.html">User Profile</a></li>
+	<li><a href="books.html">Books</a></li>
+	{% if usr.type=="admin" %}
+	<li><a href="addbooks.html">Add Books</a></li>
+	{% endif %}
+		{% if usr.type == "admin" %}
+	<li><a href="issuereq.html">Issue Requests</a></li>
+	<li><a href="bookre.html" >Book Requests</a></li>
+	<li><a href="def.html">Defaulters List</a></li>
+	{% endif %}
+	{% if usr.type != "admin" %}
+	<li><a href="return_book.html">Return Books</a></li>
+	<li><a href="issue_hist.html">Issue History</a></li>
+	<li><a href="book_req.html">Book Requisition Form</a></li>
+	<li style="background-color: skyblue; color: yellowgreen; font-weight: bold;"><a href="dues.html">Dues and Receipts</a></li>
+	    {% endif %}
+	                <li>
+                    <form method="POST" action="/logout">
+						<input type="submit" value="LOGOUT">
+					</form>
+                </li>
+	            </ul>
+        </div>
+                <div id="page-content-wrapper">
+            <div class="container-fluid">
+
+<a href='duebook'><h1>Overdue Books</h1></a>
+</div></div></div>
+</body>
